@@ -15,8 +15,9 @@
         <slot>
           <p class="title">重要信息</p>
           <div class="content">
-            <div class="weight-msg">
-              <div class="weight-msg-item">
+            <div class="weight-msgL">
+              <div class="weight-msg-item"
+                   style="margin-bottom: 14px;margin-top: 5px;">
                 <span class="weight-msg-title">推送方式：</span>
                 <el-select v-model="order.pushMode"
                            size="small"
@@ -28,17 +29,8 @@
                              :key="item.value" />
                 </el-select>
               </div>
-              <div class="weight-msg-item">
-                <span class="weight-msg-title">清单标志：</span>
-                <el-radio v-model="order.listFlag"
-                          label="0">自动产生</el-radio>
-                <el-radio v-model="order.listFlag"
-                          disabled
-                          label="1">手动产生</el-radio>
-              </div>
-            </div>
-            <div class="weight-msg">
-              <div class="weight-msg-item">
+              <div class="weight-msg-item"
+                   style="margin-bottom: 20px;">
                 <span class="weight-msg-title">推送邮箱：</span>
                 <el-input max-length="50"
                           placeholder="推送方式为不推送或手机、邮箱时，此项为必填"
@@ -48,16 +40,6 @@
                           v-model.trim="order.email">
                 </el-input>
               </div>
-              <div class="weight-msg-item">
-                <span class="weight-msg-title">代开标志：</span>
-                <el-radio v-model="order.proxyInvoiceFlag"
-                          label="0">非代开</el-radio>
-                <el-radio v-model="order.proxyInvoiceFlag"
-                          disabled
-                          label="1">代开</el-radio>
-              </div>
-            </div>
-            <div class="weight-msg">
               <div class="weight-msg-item">
                 <span class="weight-msg-title">发票种类：</span>
                 <el-select v-model="order.invoiceLine"
@@ -69,32 +51,49 @@
                              :key="item.value" />
                 </el-select>
               </div>
+            </div>
+            <div class="weight-msgR">
+              <div class="weight-msg-item">
+                <span class="weight-msg-title">清单标志：</span>
+                <el-radio v-model="order.listFlag"
+                          label="0"
+                          style="flex:0.5;">自动产生</el-radio>
+                <el-radio v-model="order.listFlag"
+                          disabled
+                          label="1"
+                          style="flex:2;">手动产生</el-radio>
+              </div>
+              <div class="weight-msg-item">
+                <span class="weight-msg-title">代开标志：</span>
+                <el-radio v-model="order.proxyInvoiceFlag"
+                          label="0"
+                          style="flex:0.5;">非代开</el-radio>
+                <el-radio v-model="order.proxyInvoiceFlag"
+                          disabled
+                          label="1"
+                          style="flex:2;">代开</el-radio>
+              </div>
               <div class="weight-msg-item">
                 <span class="weight-msg-title">开票类型：</span>
                 <el-radio v-model="order.invoiceType"
-                          label="1">正票</el-radio>
+                          label="1"
+                          style="flex:0.5;">正票</el-radio>
                 <el-radio v-model="order.invoiceType"
                           disabled
-                          label="2">红票</el-radio>
-              </div>
-            </div>
-            <div class="weight-msg">
-              <div class="weight-msg-item">
-                <!--<span class="weight-msg-title">推送邮箱：</span>-->
-                <!--<el-input max-length="50" placeholder="推送方式为不推送或手机、邮箱时，此项为必填" disabled size="small" style="width: 200px"-->
-                <!--v-model.trim="order.email">-->
-                <!--</el-input>-->
+                          label="2"
+                          style="flex:2;">红票</el-radio>
               </div>
               <div class="weight-msg-item">
                 <span class="weight-msg-title">成品油标志：</span>
                 <el-radio v-model="order.productOilFlag"
-                          label="0">非成品油</el-radio>
+                          label="0"
+                          style="flex:0.5;">非成品油</el-radio>
                 <el-radio v-model="order.productOilFlag"
                           disabled
-                          label="1">成品油</el-radio>
+                          label="1"
+                          style="flex:2;">成品油</el-radio>
               </div>
             </div>
-
           </div>
           <p class="title">
             <span>备注信息</span>
@@ -154,7 +153,7 @@ export default {
       ],
       wxUrl: '',
       ws: null,
-      bbbb: true
+      bbbb: false
     }
   },
   methods: {
@@ -165,7 +164,11 @@ export default {
   components: { CollapseTransition }
 }
 </script>
-
+<style >
+.el-textarea__inner {
+  height: 200px;
+}
+</style>
 <style scoped>
 .warp {
   grid-area: 1 / 3 / 5 / 6;
@@ -173,7 +176,7 @@ export default {
 }
 
 .box {
-  padding: 17px;
+  padding: 9px 17px;
   color: #ffffff;
   font-size: 18px;
   font-weight: 700;
@@ -195,8 +198,18 @@ export default {
 .content {
   margin-top: 5px;
   border-top: 1px solid #dddddd;
+  display: flex;
 }
-
+.weight-msgL {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.weight-msgR {
+  flex: 1;
+}
 .content-msg {
   display: flex;
   align-items: center;
@@ -239,6 +252,8 @@ export default {
 
 .weight-msg-item {
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .weight-msg-title {

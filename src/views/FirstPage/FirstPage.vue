@@ -4,19 +4,16 @@
       <el-aside width="249px"
                 style="position:fixed;">
         <el-col :span="12">
-          <el-menu default-active="2"
+          <el-menu default-active="1"
                    class="el-menu-vertical-demo"
-                   @open="handleOpen"
-                   @close="handleClose"
+                   @select="handleOpen"
                    background-color="#ffffff"
                    text-color="#303133"
                    active-text-color="#409EFF">
-            <el-submenu index="1">
-              <template slot="title">
-                <i class="el-icon-s-fold"></i>
-                <span>主页</span>
-              </template>
-            </el-submenu>
+            <el-menu-item index="1">
+              <i class="el-icon-s-fold"></i>
+              <span slot="title">主页</span>
+            </el-menu-item>
             <el-menu-item index="2">
               <i class="el-icon-menu"></i>
               <span slot="title">打印机</span>
@@ -82,52 +79,20 @@ export default {
     }
   },
   mounted () {
-    //监听滚动条滚动
-    window.addEventListener('scroll', this.onScroll)
-    console.log("监听滚动")
+
 
   },
   destroy () {
-    // 在vue组件销毁的时候要移除事件监听
-    window.removeEventListener('scroll', this.onScroll)
-    console.log("移除")
+
   },
   methods: {
     handleOpen (key, keyPath) {
       console.log(key, keyPath);
     },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleChange (val) {
-      console.log(val);
-    },
     isShow () {
       this.isActive = !this.isActive
     },
-    // 滚动监听器
-    onScroll () {
-      // 获取所有锚点元素
-      const navContents = document.querySelectorAll('.el-main .item')
-      // 所有锚点元素的 offsetTop
-      const offsetTopArr = []
-      navContents.forEach(item => {
-        offsetTopArr.push(item.offsetTop)
-      })
-      // 获取当前文档流的 scrollTop
-      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      // 定义当前点亮的导航下标
-      let navIndex = 0
-      for (let n = 0; n < offsetTopArr.length; n++) {
-        // 如果 scrollTop 大于等于第 n 个元素的 offsetTop 则说明 n-1 的内容已经完全不可见
-        // 那么此时导航索引就应该是 n 了
-        if (scrollTop >= offsetTopArr[n]) {
-          navIndex = n
-        }
-      }
-      // 把下标赋值给 vue 的 data
-      this.active = navIndex
-    }
+
   },
   components: { DirectPrint, Header, Invoice, ShopInfo, Preview, CollapseTransition, GouInfo, ImportInfo }
 }

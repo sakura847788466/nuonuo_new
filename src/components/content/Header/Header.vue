@@ -32,7 +32,8 @@
         <span class="set_ada"><img src="../../../assets/img/set.png"
                style="margin-right: 8px;"
                alt="">修改信息</span>
-        <span class="back_ada"><img src="../../../assets/img/back.png"
+        <span class="back_ada"
+              @click="loginOut"><img src="../../../assets/img/back.png"
                style="margin-right: 8px;"
                alt="">退出系统</span>
         <div v-show="isShowUser">

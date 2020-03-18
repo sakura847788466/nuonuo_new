@@ -19,7 +19,14 @@ const state = {
     order: {},
     number: ''
   },
-}
+  Menu: {
+    type: '',
+    isActive: false
+
+  }
+
+};
+
 
 export default new Vuex.Store({
   state,

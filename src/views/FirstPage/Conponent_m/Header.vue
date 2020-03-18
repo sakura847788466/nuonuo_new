@@ -11,7 +11,7 @@
           <img :src="aaaa?require('../../../assets/img/toTop.png'):require('../../../assets/img/toBut.png')"
                alt=""
                @click="isShow"
-               style="margin-bottom:5px;">
+               style="margin-bottom:5px;height:10px;">
         </span>
 
       </p>
@@ -45,6 +45,14 @@
                          plain
                          v-throttle>绑定</el-button>
             </div>
+            <div style="margin-top: 10px;display: flex;justify-content: flex-end;">
+              <el-button type="danger"
+                         size="small"
+                         @click="bindPrintNumber"
+                         plain
+                         v-throttle>选择打印机</el-button>
+            </div>
+
           </slot>
         </div>
       </collapse-transition>
@@ -113,7 +121,7 @@ export default {
       printerList: [],
       number: '',
       activeIndex: 0,
-      aaaa: true
+      aaaa: false
     }
   },
   methods: {
@@ -371,7 +379,7 @@ export default {
   display: flex;
   margin-top: 5px;
   padding-top: 5px;
-  height: 143px;
+  height: 102px;
   font-size: 16px;
   border-top: 1px solid #f8f8f8;
 }

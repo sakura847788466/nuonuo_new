@@ -4,7 +4,8 @@
     <div class="box invoice-box">
       <p class="title">销售方信息 <img :src="bbbb?require('../../../assets/img/toTop.png'):require('../../../assets/img/toBut.png')"
              alt=""
-             @click="isShow"></p>
+             @click="isShow"
+             style="height:10px;"></p>
       <collapse-transition>
         <div class="collapse-wrap"
              v-show="bbbb">
@@ -340,7 +341,7 @@ export default {
       remark: '请前往诺诺网(www.jss.com.cn)查询发票详情',
       orderArr: [],//保存销售方数组
       order: {},
-      bbbb: true,
+      bbbb: false,
       editOrderInfo: {},//修改信息
       spareOrderInfo: {},//备份修改信息
       addOrderInfo: {
@@ -610,7 +611,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px 0 10px;
-  border-top: 1px solid #dddddd;
+  /* border-top: 1px solid #dddddd; */
 }
 
 .footer-text {

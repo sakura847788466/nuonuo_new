@@ -13,16 +13,16 @@ Vue.use(Router)
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/firstPage'
   },
   {
-    path: '/home',
-    name: 'home',
-    component: Home
-  }, {
     path: '/firstPage',
     name: 'firstPage',
     component: FirstPage
+  }, {
+    path: '/home',
+    name: 'home',
+    component: Home
   }, {
     path: '/Test',
     name: 'Test',

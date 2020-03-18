@@ -1,10 +1,11 @@
 <template>
-  <!-- 销售方信息 -->
+  <!-- 购票方信息 -->
   <div class="warp">
     <div class="box invoice-box">
       <p style="display:flex;justify-content: space-between;align-item:center;">购票方信息 <img :src="bbbb?require('../../../assets/img/toTop.png'):require('../../../assets/img/toBut.png')"
              alt=""
-             @click="isShow"></p>
+             @click="isShow"
+             style="height:10px;"></p>
 
       <collapse-transition>
         <div class="collapse-wrap"
@@ -91,17 +92,21 @@
               <address class="footer-text">
 
               </address>
-              <img src="../../../assets/img/sign.png"
-                   alt=""
-                   style="margin:0;margin-left:10px;">
-              <p style="font-size:10px;">点击微信开票，将开启微信发票信息填充，会把上面数据覆盖</p>
-              <el-button type="warning"
-                         size="small"
-                         @click="wxPrint"
-                         v-throttle
-                         plain>
-                {{ws?'已开启微信开票':'开启微信开票'}}
-              </el-button>
+              <div class="bottom_r"
+                   style="display:flex;line-height:36px;">
+                <img src="../../../assets/img/sign.png"
+                     alt=""
+                     style="margin-top:10px;margin-left:6px;height: 16px;width: 16px;margin-right: 10px;">
+                <p style="font-size:10px; margin-right: 10px;">点击微信开票，将开启微信发票信息填充，会把上面数据覆盖</p>
+                <el-button type="warning"
+                           size="small"
+                           @click="wxPrint"
+                           v-throttle
+                           plain>
+                  {{ws?'已开启微信开票':'开启微信开票'}}
+                </el-button>
+              </div>
+
             </div>
             <ShopInfo />
           </slot>
@@ -140,7 +145,7 @@ export default {
         "proxyInvoiceFlag": "0",
         "userId": '4ed208ef1ea14466828bc915abb4dfc4'
       },
-      bbbb: true,
+      bbbb: false,
       invoiceLine: [
         { value: 's', label: '专用发票' },
         { value: 'p', label: '普通发票(电票)' },

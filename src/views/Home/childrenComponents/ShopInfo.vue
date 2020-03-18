@@ -36,7 +36,7 @@
                 <el-input placeholder="请输入内容"
                           v-model="scope.row.unit"
                           size="mini">
-                  <el-select v-model="scope.row.goodsName"
+                  <el-select v-model="scope.row.unit"
                              slot="append"
                              placeholder="请选择">
                     <el-option v-for="(item,index) in unit"
@@ -44,9 +44,6 @@
                                :key="index" />
                   </el-select>
                 </el-input>
-                <!--<el-select v-model="scope.row.unit" size="mini">-->
-                <!--<el-option v-for="(item,index) in unit" :value="item" :key="index"/>-->
-                <!--</el-select>-->
               </template>
             </el-table-column>
             <el-table-column label="数量"
